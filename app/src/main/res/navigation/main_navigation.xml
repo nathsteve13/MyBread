@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation">
+
+    <fragment
+        android:id="@+id/breadFragment"
+        android:name="com.example.mybread.view.produk.BreadFragment"
+        android:label="BreadFragment"
+        tools:layout="@layout/fragment_bread">
+
+        <action
+            android:id="@+id/actionBreadFragmentToBreadDetailFragment"
+            app:destination="@id/breadDetailFragment" />
+        <action
+            android:id="@+id/actionBreadFragmentToBreadAddFragment"
+            app:destination="@id/breadAddFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/breadDetailFragment"
+        android:name="com.example.mybread.view.produk.BreadDetailFragment"
+        android:label="Bread Detail"
+        tools:layout="@layout/fragment_bread_detail">
+
+        <argument
+            android:name="breadId"
+            app:argType="integer"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/breadAddFragment"
+        android:name="com.example.mybread.view.produk.BreadAddFragment"
+        android:label="Tambah Roti"
+        tools:layout="@layout/fragment_bread_add" />
+
+
+
+</navigation>

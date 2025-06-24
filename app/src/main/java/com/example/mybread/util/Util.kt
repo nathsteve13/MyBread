@@ -1,0 +1,26 @@
+package com.example.mybread.util
+
+import android.content.Context
+import androidx.room.Room
+import com.example.mybread.model.user.UserDatabase
+
+val DB_NAME = "mybread.db"
+
+// sementara belum ada migration
+// val MIGRATION_1_2 = object : Migration(1, 2) {
+//     override fun migrate(database: SupportSQLiteDatabase) {
+//         database.execSQL("ALTER TABLE your_table ADD COLUMN your_column TEXT")
+//     }
+// }
+
+fun buildDb(context: Context): UserDatabase {
+    val db = Room.databaseBuilder(
+        context,
+        UserDatabase::class.java, DB_NAME
+    )
+        //.addMigrations(MIGRATION_1_2) // nanti kalau ada migration tinggal aktifkan
+        .fallbackToDestructiveMigration() // sementara pakai destructive migration dulu
+        .build()
+
+    return db
+}

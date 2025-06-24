@@ -2,6 +2,7 @@ package com.example.mybread.model.pesanan
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.Ignore
 import androidx.room.PrimaryKey
 
 @Entity
@@ -16,5 +17,12 @@ data class Pesanan(
     val date: String,
 
     @ColumnInfo(name = "status")
-    val status: String
+    val status: String,
+
+    @ColumnInfo(name = "latitude")
+    val latitude: String,
+
+    @ColumnInfo(name = "longitude")
+    val longitude: String
+
 )

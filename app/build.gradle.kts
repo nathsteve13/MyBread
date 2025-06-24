@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "com.example.mybread"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.mybread"

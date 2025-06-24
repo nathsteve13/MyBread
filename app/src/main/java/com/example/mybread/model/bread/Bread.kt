@@ -19,5 +19,5 @@ data class Bread(
     val desc: String,
 
     @ColumnInfo(name = "price")
-    val price: String,
+    val price: Int,
 )

@@ -28,18 +28,18 @@ class BreadAddFragment : Fragment() {
 
         binding.btnSave.setOnClickListener {
             val name = binding.editName.text.toString()
-            val price = binding.editPrice.text.toString()
+            val price = binding.editPrice.text.toString().toIntOrNull()
             val desc = binding.editDesc.text.toString()
 
-            if (name.isNotEmpty() && price.isNotEmpty()) {
+            if (name.isNotEmpty() && price != null) {
                 val newBread = Bread(name = name, price = price, desc = desc, image = "")
                 viewModel.insert(newBread)
-
-                Toast.makeText(requireContext(), "Roti berhasil ditambahkan", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Data roti berhasil ditambahkan", Toast.LENGTH_SHORT).show()
                 Navigation.findNavController(it).popBackStack()
             } else {
-                Toast.makeText(requireContext(), "Harap isi semua data!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Isi semua data dengan benar", Toast.LENGTH_SHORT).show()
             }
+
         }
     }
 }

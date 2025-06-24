@@ -8,6 +8,9 @@ interface PesananDao {
     @Insert
     fun insertPesanan(pesanan: Pesanan): Long
 
+    @Query("SELECT * FROM Pesanan")
+    fun show(): List<Pesanan>
+
     @Query("SELECT * FROM Pesanan WHERE user_id = :userId ORDER BY date DESC")
     fun getPesananByUser(userId: Int): List<Pesanan>
 

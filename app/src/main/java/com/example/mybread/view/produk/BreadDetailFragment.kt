@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import com.example.mybread.databinding.FragmentBreadDetailBinding
 import com.example.mybread.viewmodel.BreadViewModel
 
@@ -31,5 +32,17 @@ class BreadDetailFragment : Fragment() {
             binding.txtDetailPrice.text = "Rp ${bread.price}"
             binding.txtDetailDesc.text = bread.desc
         }
+
+        binding.btnPesan.setOnClickListener {
+            val breadId = BreadDetailFragmentArgs.fromBundle(requireArguments()).breadId
+            val bread = viewModel.breadSingleLD.value
+            if (bread != null) {
+                val action = BreadDetailFragmentDirections
+                    .actionBreadDetailFragmentToPesanFragment(breadId = bread.id, price = bread.price)
+                Navigation.findNavController(it).navigate(action)
+            }
+
+        }
+
     }
 }

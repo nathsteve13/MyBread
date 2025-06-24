@@ -2,8 +2,10 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_navigation">
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/breadFragment">
 
+    <!-- Bread Fragment -->
     <fragment
         android:id="@+id/breadFragment"
         android:name="com.example.mybread.view.produk.BreadFragment"
@@ -13,11 +15,13 @@
         <action
             android:id="@+id/actionBreadFragmentToBreadDetailFragment"
             app:destination="@id/breadDetailFragment" />
+
         <action
             android:id="@+id/actionBreadFragmentToBreadAddFragment"
             app:destination="@id/breadAddFragment" />
     </fragment>
 
+    <!-- Bread Detail Fragment -->
     <fragment
         android:id="@+id/breadDetailFragment"
         android:name="com.example.mybread.view.produk.BreadDetailFragment"
@@ -26,15 +30,80 @@
 
         <argument
             android:name="breadId"
-            app:argType="integer"/>
+            app:argType="integer" />
+
+        <action
+            android:id="@+id/actionBreadDetailFragmentToPesanFragment"
+            app:destination="@id/pesanFragment" />
     </fragment>
 
+    <!-- Bread Add Fragment -->
     <fragment
         android:id="@+id/breadAddFragment"
         android:name="com.example.mybread.view.produk.BreadAddFragment"
         android:label="Tambah Roti"
         tools:layout="@layout/fragment_bread_add" />
 
+    <!-- Pesan Fragment -->
+    <fragment
+        android:id="@+id/pesanFragment"
+        android:name="com.example.mybread.view.pesan.PesanFragment"
+        android:label="Pesan"
+        tools:layout="@layout/fragment_pesan">
 
+        <argument
+            android:name="breadId"
+            app:argType="integer" />
+
+        <argument
+            android:name="price"
+            app:argType="integer" />
+    </fragment>
+
+    <!-- Pesanan Fragment -->
+    <fragment
+        android:id="@+id/pesananFragment"
+        android:name="com.example.mybread.view.pesan.PesananFragment"
+        android:label="Pesanan"
+        tools:layout="@layout/fragment_pesanan">
+
+        <action
+            android:id="@+id/actionPesananFragmentToDetailPesananFragment"
+            app:destination="@id/detailPesananFragment" />
+
+        <argument
+            android:name="userId"
+            app:argType="integer"
+            android:defaultValue="1" />
+    </fragment>
+
+    <!-- Detail Pesanan Fragment -->
+    <fragment
+        android:id="@+id/detailPesananFragment"
+        android:name="com.example.mybread.view.pesan.DetailPesananFragment"
+        android:label="Detail Pesanan"
+        tools:layout="@layout/fragment_detail_pesanan">
+
+        <argument
+            android:name="pesananId"
+            app:argType="integer" />
+    </fragment>
+
+    <!-- Laporan Fragment -->
+    <fragment
+        android:id="@+id/laporanFragment"
+        android:name="com.example.mybread.view.laporan.LaporanFragment"
+        android:label="Laporan"
+        tools:layout="@layout/fragment_laporan" />
+
+    <!-- Profile Fragment -->
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.mybread.view.profil.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" />
 
 </navigation>
+
+
+

@@ -14,6 +14,9 @@ interface UserDao {
     @Query("SELECT * FROM user WHERE username = :username AND password = :password LIMIT 1")
     fun login(username: String, password: String): User
 
+    @Query("UPDATE user SET latitude = :lat, longtitude = :lon WHERE username = :username")
+    fun updateLocation(username: String, lat: String, lon: String)
+
     @Query("SELECT * FROM user WHERE username = :username LIMIT 1")
     fun getUserByUsername(username: String): User
 

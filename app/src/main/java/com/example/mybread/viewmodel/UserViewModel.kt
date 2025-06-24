@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.example.mybread.model.user.User
+import com.example.mybread.model.user.UserDatabase
 import com.example.mybread.util.buildDb
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -33,6 +34,14 @@ class UserViewModel(application: Application) : AndroidViewModel(application), C
             }
         }
     }
+
+    fun updateUserLocation(username: String, latitude: String, longitude: String) {
+        launch {
+            val dao = UserDatabase(getApplication()).userDao()
+            dao.updateLocation(username, latitude, longitude)
+        }
+    }
+
 
     fun login(username: String, password: String) {
         launch {

@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.mybread.util.DB_NAME
 
-@Database(entities = [User::class], version = 1)
+@Database(entities = [User::class], version = 4)
 abstract class UserDatabase : RoomDatabase() {
 
     abstract fun userDao(): UserDao
@@ -18,8 +18,9 @@ abstract class UserDatabase : RoomDatabase() {
 
         private fun buildDatabase(context: Context) = Room.databaseBuilder(
             context.applicationContext,
-            UserDatabase::class.java, DB_NAME
+            UserDatabase::class.java, "user.db"
         )
+
             .fallbackToDestructiveMigration()
             .build()
 

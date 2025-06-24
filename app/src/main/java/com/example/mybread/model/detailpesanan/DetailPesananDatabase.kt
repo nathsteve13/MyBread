@@ -5,10 +5,10 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.mybread.model.bread.Bread
-import com.example.mybread.model.user.BreadDao
+import com.example.mybread.model.bread.BreadDao
 import com.example.mybread.util.DB_NAME
 
-@Database(entities = [DetailPesanan::class], version = 1)
+@Database(entities = [DetailPesanan::class], version = 5)
 abstract class DetailPesananDatabase : RoomDatabase() {
 
     abstract fun breadDao(): DetailPesananDao
@@ -20,8 +20,9 @@ abstract class DetailPesananDatabase : RoomDatabase() {
 
         private fun buildDatabase(context: Context) = Room.databaseBuilder(
             context.applicationContext,
-            DetailPesananDatabase::class.java, DB_NAME
+            DetailPesananDatabase::class.java, "detail_pesanan.db"
         )
+
             .fallbackToDestructiveMigration()
             .build()
 
